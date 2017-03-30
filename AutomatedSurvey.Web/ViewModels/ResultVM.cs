@@ -5,10 +5,10 @@
 
     public class ResultVM
     {
-        public string SurveyName { get; set; }
-
         public IEnumerable<Answer> Answers { get; set; }
 
         public List<string> Calls { get; set; }
+
+        public string SurveyName { get; set; }
     }
 }

@@ -22,11 +22,11 @@
 
         public string RecordingUrl { get; set; }
 
-        public string TranscriptionText { get; set; }
+        [Timestamp]
+        public byte[] Timestamp { get; set; }
 
         public string TranscriptionSid { get; set; }
 
-        [Timestamp]
-        public byte[] Timestamp { get; set; }
+        public string TranscriptionText { get; set; }
     }
 }

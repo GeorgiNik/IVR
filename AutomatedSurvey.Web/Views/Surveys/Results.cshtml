@@ -1,5 +1,4 @@
-﻿@using System.Collections
-@using AutomatedSurvey.Web.Models
+﻿@using AutomatedSurvey.Web.Models
 @model AutomatedSurvey.Web.ViewModels.ResultVM
 
 
@@ -8,7 +7,9 @@
 @foreach (string call in Model.Calls)
 {
     <div class="call" style="padding: 20px;">
-        <h4><b>Call : @call</b></h4>
+        <h4>
+            <b>Call : @call</b>
+        </h4>
 
         @foreach (Answer answer in Model.Answers.Where(answer => answer.CallSid.Equals(call)))
         {

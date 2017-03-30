@@ -22,7 +22,7 @@ namespace AutomatedSurvey.Web.Utilities
         public async Task<MessageResource> SendMessage(string from, string to, string body)
         {
             var toPhoneNumber = new PhoneNumber(to);
-            var messageResource = await MessageResource.CreateAsync(toPhoneNumber, @from: new PhoneNumber(@from), body: body, client: this._client);
+            MessageResource messageResource = await MessageResource.CreateAsync(toPhoneNumber, from: new PhoneNumber(from), body: body, client: this._client);
 
             return messageResource;
         }

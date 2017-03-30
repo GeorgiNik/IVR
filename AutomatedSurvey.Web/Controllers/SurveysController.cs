@@ -1,6 +1,5 @@
 ﻿namespace AutomatedSurvey.Web.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
@@ -44,7 +43,6 @@
             return this.TwiML(response);
         }
 
-
         // GET: connectcall
         public TwiMLResult StartSurvey()
         {
@@ -66,7 +64,7 @@
                 .Select(answer => answer.CallSid)
                 .Distinct().ToList();
 
-            var vm = new ResultVM()
+            var vm = new ResultVM
             {
                 Calls = uniqueAnswers,
                 Answers = answers,
@@ -81,8 +79,10 @@
         {
             switch (digits)
             {
-                case "1": return this.StartSurvey();
-                case "2": return this.Exit();
+                case "1":
+                    return this.StartSurvey();
+                case "2":
+                    return this.Exit();
             }
 
             return this.RedirectWelcome();

@@ -39,7 +39,7 @@
             return $"/answers/create?questionId={question.Id}";
         }
 
-         private static string GenerateTranscribeUrl(Question question)
+        private static string GenerateTranscribeUrl(Question question)
         {
             return $"/answers/update?questionId={question.Id}";
         }

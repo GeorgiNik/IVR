@@ -37,7 +37,7 @@
         [HttpPost]
         public ActionResult Update([Bind(Include = "QuestionId,RecordingUrl,CallSid,From,TranscriptionSid,TranscriptionText")] Answer answer)
         {
-            var answerModel = this._answersRepository.FirstOrDefault(x => x.CallSid == answer.CallSid && x.QuestionId == answer.QuestionId);
+            Answer answerModel = this._answersRepository.FirstOrDefault(x => x.CallSid == answer.CallSid && x.QuestionId == answer.QuestionId);
 
             if (answerModel != null)
             {
