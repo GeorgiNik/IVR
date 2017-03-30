@@ -1,0 +1,47 @@
+﻿@using System.Collections
+@using AutomatedSurvey.Web.Models
+@model AutomatedSurvey.Web.ViewModels.ResultVM
+
+
+<h2>@Model.SurveyName</h2>
+
+@foreach (string call in Model.Calls)
+{
+    <div class="call" style="padding: 20px;">
+        <h4><b>Call : @call</b></h4>
+
+        @foreach (Answer answer in Model.Answers.Where(answer => answer.CallSid.Equals(call)))
+        {
+            <div class="call">
+                <p>
+                    <b>Question:</b> @answer.Question.Body
+                </p>
+                @switch (answer.Question.Type)
+                {
+                    case QuestionType.Voice:
+                        <p>
+                            <b>Answer:</b>
+                        </p>
+                        <audio controls>
+                            <source src="@answer.RecordingUrl" type="audio/mpeg">
+                            Your browser does not support the audio tag.
+                        </audio>
+                        <p>
+                            <b>Transcription text:</b> @answer.TranscriptionText
+                        </p>
+                        break;
+                    case QuestionType.Numeric:
+                        <p>
+                            <b>Answer:</b> @answer.Digits
+                        </p>
+                        break;
+                    case QuestionType.YesNo:
+                        <p>
+                            <b>Answer:</b> @(answer.Digits.Equals("1") ? "Yes" : "No")
+                        </p>
+                        break;
+                }
+            </div>
+        }
+    </div>
+}
